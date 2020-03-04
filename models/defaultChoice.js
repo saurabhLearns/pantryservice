@@ -5,6 +5,7 @@ const DefaultSchema = new schema({
 	email:{
 		type:String,
 		required: true,
+		unique: true
 	},
 	defaultchoice:{
 		type: String,
