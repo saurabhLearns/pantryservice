@@ -4,7 +4,7 @@ const schema = mongoose.Schema
 const DefaultSchema = new schema({
 	email:{
 		type:String,
-		required: true
+		required: true,
 	},
 	defaultchoice:{
 		type: String,

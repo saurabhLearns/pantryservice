@@ -17,6 +17,7 @@ router.get('/', auth, function(req, res){
 			$group:
 				{
 				_id: "$defaultchoice",
+				total: {$sum: 1},
 				name: { $push:  "$email"}
 				}
 			}
@@ -31,20 +32,6 @@ router.get('/', auth, function(req, res){
 	}
 })
 
-
-//METHOD: @POST
-//ACTION: Post default choices by users on the first time of login
-//AUTH: private
-router.post('/', auth, function(req, res){
-	//posting with user's email to track whos default it is
-	const postUser = User.findById(req.user.id).select('email')
-	const NewdefaultChoice = new defaultChoice({
-		email: postUser.email,
-		defaultChoice:req.body.defaultChoice,
-	})
-	NewdefaultChoice.save().then(defaultchoice => res.json(defaultchoice))
-})
-
 //METHOD: @PUT
 //ACTION: update default choices by users
 //AUTH: private
@@ -54,9 +41,11 @@ router.put('/:_id', auth, function(req, res){
 	.then(putUser => {
 		defaultChoice.findById(req.params._id)
 		.then(itemToUpdate=>{
-			if (itemToUpdate.email != putUser.email) return res.status(400).json({msg:"unauthorised action!"})
-			defaultChoice.findByIdAndUpdate({_id:req.params._id}, req.body)
+			if (itemToUpdate.email != putUser.email) 
+			return res.status(400).json({msg:"unauthorised action!"})
+			defaultChoice.findByIdAndUpdate(req.params._id, req.body)
 			.then(() => {
+				console.log()
 				//prevents need for page refresh to display updated vals
 				defaultChoice.findById(req.params._id).then((updatedItem)=>{
 					res.json(updatedItem)
@@ -69,3 +58,20 @@ router.put('/:_id', auth, function(req, res){
 
 
 module.exports = router
+
+
+
+
+
+//METHOD: @POST
+//ACTION: Post default choices by users on the first time of login
+//AUTH: private
+// router.post('/', auth, function(req, res){
+// 	//posting with user's email to track whos default it is
+// 	const postUser = User.findById(req.user.id).select('email')
+// 	const NewdefaultChoice = new defaultChoice({
+// 		email: postUser.email,
+// 		defaultChoice:req.body.defaultChoice,
+// 	})
+// 	NewdefaultChoice.save().then(defaultchoice => res.json(defaultchoice))
+// })
