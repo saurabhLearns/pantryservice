@@ -1,0 +1,4 @@
+{
+	"MongoURI" : "mongodb+srv://userfornothing:EOk2OZKwex9Gb7k7@cluster0-1dpko.mongodb.net/pantryusecase?retryWrites=true&w=majority",
+	"jwtSecret" : "sl_whatever"
+}
