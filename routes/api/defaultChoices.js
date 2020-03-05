@@ -5,7 +5,6 @@ const defaultChoice = require('../../models/defaultChoice')
 const User = require('../../models/user')
 const auth = require('../../middleware/auth')
 
-
 //METHOD: @GET
 //ACTION: get default choices of users
 //AUTH: private (User and admin, based on content to be retreived)
