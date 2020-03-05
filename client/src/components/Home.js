@@ -1,7 +1,7 @@
 import React from 'react';
-import Navbar from './Navbar'
 import Container from '@material-ui/core/Container';
-import Typography from '@material-ui/core/Typography';
+import Navbar from './Navbar'
+import User from './User'
 
 export default function Home() {
   return (
@@ -11,7 +11,7 @@ export default function Home() {
 
 	  {/* All stuffs down here */}
       <Container>
-        <Typography component="p">heya</Typography>
+	  	<User/>
       </Container>    
 	
 	</div>

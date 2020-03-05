@@ -16,7 +16,7 @@ const useStyles = makeStyles(theme => ({
 	menuText:{
 		width: 100,
 	},
-  }));
+  })); 
 
 export default function LoginModal() {
 	const classes = useStyles();
