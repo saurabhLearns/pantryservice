@@ -45,7 +45,7 @@ export default function ButtonAppBar() {
 		}
 		setState({ ...state, [side]: open });
 	};
-
+ 
 	//render
 	return (
 		<div className={classes.root}>

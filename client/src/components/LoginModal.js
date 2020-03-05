@@ -7,16 +7,27 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Switch from '@material-ui/core/Switch';
+import MuiAlert from '@material-ui/lab/Alert';
+
 
 const useStyles = makeStyles(theme => ({
 	menuText:{
 		width: 100,
-	}
+	},
   }));
 
 export default function LoginModal() {
 	const classes = useStyles();
 	const [open, setOpen] = React.useState(false);
+	const [state, setState] = React.useState({
+		checkedA: false,
+	  });
+	  
+	  const handleCheckChange  = event => {
+		setState({ ...state, checkedA: event.target.checked });
+	  }; 
 
 	const handleClickOpen = () => {
 		setOpen(true);
@@ -35,6 +46,7 @@ export default function LoginModal() {
 				<DialogTitle id="form-dialog-title">Login to continue</DialogTitle>
 				<DialogContent>
 				<DialogContentText>
+				<MuiAlert elevation={2} variant="filled" severity="error">error</MuiAlert>
 				</DialogContentText>
 				<TextField
 					autoFocus
@@ -50,6 +62,15 @@ export default function LoginModal() {
 					label="Password"
 					type="password"
 					fullWidth
+				/><br/><br/>
+				<FormControlLabel
+					control={
+						<Switch 
+						checked={state.checkedA} 
+						onChange={handleCheckChange} 
+						value="isAdmin" />
+					}
+					label="I am admin"
 				/>
 				</DialogContent>
 				<DialogActions>

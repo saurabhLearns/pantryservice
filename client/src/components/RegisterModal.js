@@ -7,6 +7,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import MuiAlert from '@material-ui/lab/Alert';
 
 const useStyles = makeStyles(theme => ({
 	menuText:{
@@ -35,6 +36,7 @@ export default function RegisterModal() {
 				<DialogTitle id="form-dialog-title">Register to continue</DialogTitle>
 				<DialogContent>
 				<DialogContentText>
+				<MuiAlert elevation={2} variant="filled" severity="error">error</MuiAlert>
 				</DialogContentText>
 				<TextField
 					autoFocus
