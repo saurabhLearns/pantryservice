@@ -11,7 +11,6 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
 import MuiAlert from '@material-ui/lab/Alert';
 
-
 const useStyles = makeStyles(theme => ({
 	menuText:{
 		width: 100,
@@ -25,8 +24,11 @@ export default function LoginModal() {
 		checkedA: false,
 	  });
 	  
-	  const handleCheckChange  = event => {
-		setState({ ...state, checkedA: event.target.checked });
+	const handleCheckChange  = event => {
+		setState({ 
+			...state, 
+			checkedA: event.target.checked 
+		});
 	  }; 
 
 	const handleClickOpen = () => {
@@ -74,9 +76,7 @@ export default function LoginModal() {
 				/>
 				</DialogContent>
 				<DialogActions>
-				<Button onClick={handleClose} color="primary">
-					Login
-				</Button>
+				<Button onClick={handleClose} color="primary">Login</Button>
 				</DialogActions>
 			</Dialog>
 		</div>

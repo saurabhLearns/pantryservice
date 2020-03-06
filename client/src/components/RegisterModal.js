@@ -62,9 +62,7 @@ export default function RegisterModal() {
 				/>
 				</DialogContent>
 				<DialogActions>
-				<Button onClick={handleClose} color="primary">
-					Signup
-				</Button>
+					<Button onClick={handleClose} color="primary">Signup</Button>
 				</DialogActions>
 			</Dialog>
 		</div>

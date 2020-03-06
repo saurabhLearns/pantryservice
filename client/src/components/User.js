@@ -7,10 +7,9 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
-
-import 'normalize.css'
 import { Grid, Paper } from '@material-ui/core';
 
+import 'normalize.css'
 
 const useStyles = makeStyles(theme => ({
 	root: {
@@ -40,12 +39,10 @@ export default function User() {
 
 	const classes = useStyles();
 	const [defaultchoice, setdefaultchoice] = React.useState('');
-
 	const handleChange = event => {
 		setdefaultchoice(event.target.value);
 	};
 	return (
-
 		<div>
 			<Typography variant="h4">Hello user!</Typography>	
 			<br/>	
@@ -67,8 +64,7 @@ export default function User() {
 								<MenuItem value={10}>Ten</MenuItem>
 								<MenuItem value={20}>Twenty</MenuItem>
 								<MenuItem value={30}>Thirty</MenuItem>
-								</Select>
-								
+								</Select>								
 							</FormControl>
 							<br/><br/>
 							<Button variant="contained">Update Default Choice</Button>
@@ -85,7 +81,6 @@ export default function User() {
 							<br/><br/>
 							<Button variant="contained">Submit</Button>
 						</form>
-
 					</Paper>
 				</Grid>
 			</Grid>
