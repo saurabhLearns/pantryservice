@@ -15,12 +15,11 @@ const useStyles = makeStyles(theme => ({
 	root: {
 		'& > *': {
 		  margin: theme.spacing(1),
-		  width: 300,
+		  maxWidth: 300,
 		},
 	  },
 	formControl: {
 	  margin: theme.spacing(1),
-	  minWidth: 300,
 	},
 	selectEmpty: {
 	  marginTop: theme.spacing(2),
@@ -76,7 +75,7 @@ export default function User() {
 					<Paper className={classes.paper}>
 						<form noValidate autoComplete="off">
 							<div className={classes.root} >
-								<TextField id="standard-basic" label="Special Requirements today?" />
+								<TextField id="standard-basic" multiline="true" fullWidth="true" label="Special Requirements today?" />
 							</div>
 							<br/><br/>
 							<Button variant="contained">Submit</Button>

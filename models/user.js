@@ -15,9 +15,9 @@ const UserSchema = new schema({
 		type : String,
 		required : true
 	},
-	adminRole:{
-		type:Boolean,
-		default: false
+	role:{
+		type:Number,
+		required : true
 	}
 })
 

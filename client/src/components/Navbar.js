@@ -9,9 +9,9 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import Hidden from '@material-ui/core/Hidden';
 
-
 import LoginModal from './LoginModal'
 import RegisterModal from './RegisterModal'
+import Logout from './Logout'
 
 //styles
 const useStyles = makeStyles(theme => ({
@@ -25,6 +25,9 @@ const useStyles = makeStyles(theme => ({
 	title: {
 		flexGrow: 1,
 	},
+	toggleDrawer:{
+		margin: theme.spacing(2),
+	}
 
 }));
 
@@ -33,7 +36,7 @@ const useStyles = makeStyles(theme => ({
 export default function ButtonAppBar() {
   	const classes = useStyles();
 
-	//hooks, gonna be headache
+	//hooks
 	const [state, setState] = React.useState({
 		top: false,
 	});
@@ -58,7 +61,10 @@ export default function ButtonAppBar() {
 					</IconButton>
 				</Button>
 				<SwipeableDrawer open={state.left} onClose={toggleDrawer('left', false)} onOpen={toggleDrawer('left', true)}>
-					<div>
+					<div className={classes.toggleDrawer}>
+						<Typography variant="h6" className={classes.title}>
+							Pantry Management
+						</Typography>
 						<LoginModal/>
 						<RegisterModal/>
 					</div>

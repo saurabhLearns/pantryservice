@@ -13,7 +13,6 @@ app.use(express.json())
 app.use('/api/special', require('./routes/api/specials'))
 app.use('/api/user', require('./routes/api/users'))
 app.use('/api/auth', require('./routes/api/auth'))
-app.use('/api/admin', require('./routes/api/admins'))
 app.use('/api/defaultchoice', require('./routes/api/defaultChoices'))
 
 //connect db
