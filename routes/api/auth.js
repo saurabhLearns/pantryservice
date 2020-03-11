@@ -9,7 +9,7 @@ const auth = require('../../middleware/auth')
 const User = require('../../models/user')
 
 
-//ACTION: authenticate admin/user depending on checkbox bool value 'isadmin'
+//Authenticate admin depending on frontend's switch bool value 'isadmin'
 router.post('/admin-login', function(req, res) {
 	const {email, password} = req.body
 
@@ -50,7 +50,7 @@ router.post('/admin-login', function(req, res) {
 })
 
 
-
+//authicate user after login and generate token
 router.post('/user-login', function(req, res) {
 	const {email, password} = req.body
 	if(!email || !password)	return res.status(400).json({msg:"Please enter all fields!"})
@@ -86,7 +86,7 @@ router.post('/user-login', function(req, res) {
 })
 
 
-//ACTION: get authenticated user details
+//get authenticated user/admin details
 router.get('/user', auth, (req, res) => {
 	User.findById(req.user.id)
 	.select('-password')

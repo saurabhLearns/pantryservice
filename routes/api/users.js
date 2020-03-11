@@ -10,7 +10,7 @@ const User = require('../../models/user')
 const DefaultChoice = require('../../models/defaultChoice')
 
 
-//ACTION: register new user
+//register new user
 router.post('/adduser', auth, function(req, res){
 	const {name, email, password, role} = req.body
 	if (req.user.role < 3 && req.user.role < role){
