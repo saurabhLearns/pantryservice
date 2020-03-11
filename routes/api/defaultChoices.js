@@ -5,8 +5,7 @@ const defaultChoice = require('../../models/defaultChoice')
 const User = require('../../models/user')
 const auth = require('../../middleware/auth')
 
-
-//ACTION: get default choices of users
+//get default choices of users
 router.get('/get-default', auth, function(req, res){
 	//if admin, then admin can see everyone's default choices
 	if(req.user.role<3){
@@ -29,7 +28,7 @@ router.get('/get-default', auth, function(req, res){
 })
 
 
-//ACTION: update default choices by users
+//update default choices by users
 router.put('/change-default/:_id', auth, function(req, res){
 	//checking if user is changing its own default choice or not
 	User.findById(req.user.id).select('email')
@@ -43,7 +42,7 @@ router.put('/change-default/:_id', auth, function(req, res){
 				console.log()
 				//prevents need for page refresh to display updated vals
 				defaultChoice.findById(req.params._id).then((updatedItem)=>{
-					res.json(updatedItem)
+					res.json(updatedItem) 
 				})
 			})
 		})

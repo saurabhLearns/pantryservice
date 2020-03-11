@@ -6,7 +6,7 @@ const Special = require('../../models/special')
 const User = require('../../models/user')
 const auth = require('../../middleware/auth')
 
-//ACTION: get special requirements of users
+//get special requirements of users
 router.get('/get-special', auth, function(req, res){
 	if(req.user.role<3){
 		//return check?
@@ -16,7 +16,8 @@ router.get('/get-special', auth, function(req, res){
 })
 
 
-//ACTION: Post special requirements by users
+
+//Post special requirements by users
 router.post('/post-special', auth, function(req, res){
 	User.findById(req.user.id).select('email').then(postUser => {
 		var NewSpecials = new Special({
