@@ -16,6 +16,7 @@ router.get('/get-special', auth, function(req, res){
 })
 
 
+
 //Post special requirements by users
 router.post('/post-special', auth, function(req, res){
 	User.findById(req.user.id).select('email').then(postUser => {
