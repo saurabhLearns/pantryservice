@@ -75,9 +75,9 @@ export default function User() {
 					<Paper className={classes.paper}>
 						<form noValidate autoComplete="off">
 							<div className={classes.root} >
-								<TextField id="standard-basic" multiline="true" fullWidth="true" label="Special Requirements today?" />
+								<TextField id="standard-basic" multiline="true" fullWidth="true" rows="4" variant='filled' label="Special Requirements today?" />
 							</div>
-							<br/><br/>
+							<br/>
 							<Button variant="contained">Submit</Button>
 						</form>
 					</Paper>

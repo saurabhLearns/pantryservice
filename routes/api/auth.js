@@ -86,6 +86,29 @@ router.post('/user-login', function(req, res) {
 })
 
 
+router.put('/change-password', auth, (req, res)=>{
+	//change password
+	var {oldPassword, password} = req.body
+	User.findById(req.user.id).then(getUser=>{
+		bcrypt.compare(oldPassword, getUser.password)
+		.then(isMatch=>{
+			if(!isMatch) return res.status(400).json({msg:"Password is incorrect."})
+			else{
+				bcrypt.genSalt(10, (err, salt) =>{
+					bcrypt.hash(password, salt, (err, hash) =>{
+						if(err) throw err
+						password = hash
+						User.findByIdAndUpdate(getUser._id, {password: password})
+						.then(() => res.status(200).json({msg:"updated"}))
+						.catch((err)=>console.log(err.message))		
+					})
+				})
+			}
+		}).catch((err)=>console.log(err.message))
+	}).catch((err)=>console.log(err.message))
+})
+
+
 //get authenticated user/admin details
 router.get('/user', auth, (req, res) => {
 	User.findById(req.user.id)

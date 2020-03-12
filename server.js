@@ -10,10 +10,10 @@ const db = config.get('MongoURI')
 app.use(express.json())
 
 //routes
-app.use('/api/special', require('./routes/api/specials'))
-app.use('/api/user', require('./routes/api/users'))
+app.use('/api/specials', require('./routes/api/specials'))
+app.use('/api/users', require('./routes/api/users'))
 app.use('/api/auth', require('./routes/api/auth'))
-app.use('/api/defaultchoice', require('./routes/api/defaultChoices'))
+app.use('/api/defaultchoices', require('./routes/api/defaultChoices'))
 
 //connect db
 mongoose.connect(db)
