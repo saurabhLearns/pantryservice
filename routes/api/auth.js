@@ -46,7 +46,7 @@ router.post('/admin-login', function(req, res) {
 			)
 		})
 		.catch(err => res.status(400).json({msg:"unknown error"}))
-	})
+	}).catch(err => res.status(400).json({msg:"unknown error"}))
 })
 
 
@@ -80,8 +80,8 @@ router.post('/user-login', function(req, res) {
 					})
 				}
 			)
-		})
-	})
+		}).catch(err => res.status(400).json({msg:"unknown error"}))
+	}).catch(err => res.status(400).json({msg:"unknown error"}))
 })
 
 
@@ -94,6 +94,7 @@ router.put('/change-password', auth, (req, res)=>{
 			if(!isMatch) return res.status(400).json({msg:"Old password is incorrect."})
 			else{
 				bcrypt.genSalt(10, (err, salt) =>{
+					if(err) throw err
 					bcrypt.hash(password, salt, (err, hash) =>{
 						if(err) throw err
 						password = hash

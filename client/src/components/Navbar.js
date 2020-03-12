@@ -1,22 +1,26 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
-import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import Hidden from '@material-ui/core/Hidden';
+import AccountCircle from '@material-ui/icons/AccountCircle';
 
-import LoginModal from './LoginModal'
+import { 
+	IconButton, 
+	Typography, 
+	Container, 
+	Toolbar, 
+	AppBar,
+	Menu,
+} from '@material-ui/core';
+
 import RegisterModal from './RegisterModal'
 import Logout from './Logout'
+import ChangePasswordModal from './ChangePasswordModal'
 
-//styles
 const useStyles = makeStyles(theme => ({
 	root: {
 		flexGrow: 1,
+	},
+	menuText:{
+		width: 'auto',
 	},
 	menuButton: {
 		marginRight: theme.spacing(2),
@@ -25,60 +29,75 @@ const useStyles = makeStyles(theme => ({
 	title: {
 		flexGrow: 1,
 	},
-	toggleDrawer:{
-		margin: theme.spacing(2),
-	}
-
+	Greettitle: {
+		marginLeft: theme.spacing(2),
+		flex: 1,
+	  },
 }));
 
 
-//implementation and rendering
+
 export default function ButtonAppBar() {
-  	const classes = useStyles();
+	const classes = useStyles();
 
 	//hooks
-	const [state, setState] = React.useState({
-		top: false,
-	});
+	const [anchorEl, setAnchorEl] = React.useState(null);
+  	const openAnchor = Boolean(anchorEl);
+
+	const handleMenu = event => {
+		setAnchorEl(event.currentTarget);
+	};
 	
-	//drawer toggler
-	const toggleDrawer = (side, open) => event => {
-		if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
-		return;
-		}
-		setState({ ...state, [side]: open });
+	const handleClose = () => {
+		setAnchorEl(null);
 	};
  
-	//render
 	return (
 		<div className={classes.root}>
-		<AppBar position ="relative">
-			<Toolbar>
-			<Hidden mdUp>
-				<Button onClick={toggleDrawer('left', true)} >
-					<IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-						<MenuIcon />
-					</IconButton>
-				</Button>
-				<SwipeableDrawer open={state.left} onClose={toggleDrawer('left', false)} onOpen={toggleDrawer('left', true)}>
-					<div className={classes.toggleDrawer}>
-						<Typography variant="h6" className={classes.title}>
-							Pantry Management
-						</Typography>
-						<LoginModal/>
-						<RegisterModal/>
-					</div>
-				</SwipeableDrawer>
-			</Hidden>
-			<Typography variant="h6" className={classes.title}>
-				Pantry Management
-			</Typography>
-			<Hidden smDown>
-					<LoginModal/>
-					<RegisterModal/>	
-			</Hidden>
-			</Toolbar>
-		</AppBar>
+			<AppBar position ="relative">
+				<Toolbar>
+
+					<Typography variant="h6" className={classes.title}>
+						Pantry Management
+					</Typography>
+
+						<div>
+							<IconButton
+								aria-label="account of current user"
+								aria-controls="menu-appbar"
+								aria-haspopup="true"
+								onClick={handleMenu}
+								color="inherit"
+								>
+								<AccountCircle />
+							</IconButton>
+							<Menu
+								id="menu-appbar"
+								anchorEl={anchorEl}
+								anchorOrigin={{
+								vertical: 'top',
+								horizontal: 'right',
+								}}
+								keepMounted
+								transformOrigin={{
+								vertical: 'top',
+								horizontal: 'right',
+								}}
+								open={openAnchor}
+								onClose={handleClose}
+							>
+
+								<RegisterModal/>
+								<ChangePasswordModal/>
+								<Logout/>
+							</Menu>
+						</div>	
+				</Toolbar>
+			</AppBar>
+			<br/>
+			<Container>
+				<Typography variant="h4" className={classes.Greettitle}>Hello user!</Typography>
+			</Container>
 		</div>
 	);
 }

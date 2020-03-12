@@ -1,42 +1,39 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
+import {
+	Button, 
+	TextField, 
+	Dialog, 
+	DialogActions, 
+	MenuItem, 
+	DialogContent, 
+	DialogContentText, 
+	DialogTitle
+} from '@material-ui/core';
+
 import MuiAlert from '@material-ui/lab/Alert';
 
-const useStyles = makeStyles(theme => ({
-	menuText:{
-		width: 100,
-	}
-  }));
+
 
 export default function RegisterModal() {
-	const classes = useStyles();
-	const [open, setOpen] = React.useState(false);
+	const [openReg, setOpenReg] = React.useState(false);
 
-	const handleClickOpen = () => {
-		setOpen(true);
+	const handleClickOpenReg = () => {
+		setOpenReg(true);
 	};
 
-	const handleClose = () => {
-		setOpen(false);
+	const handleCloseReg = () => {
+		setOpenReg(false);
 	};
 
 	return (
 		<div>
-			<Button color="inherit" onClick={handleClickOpen} className={classes.menuText} >
-				Register
-			</Button>
-			<Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
+			
+			<MenuItem onClick={handleClickOpenReg}>Register New User</MenuItem>
+			<Dialog open={openReg} onClose={handleCloseReg} aria-labelledby="form-dialog-title">
 				<DialogTitle id="form-dialog-title">Register to continue</DialogTitle>
 				<DialogContent>
 				<DialogContentText>
-				<MuiAlert elevation={2} variant="filled" severity="error">error</MuiAlert>
+				<MuiAlert elevation={1} variant="filled" severity="error">error</MuiAlert>
 				</DialogContentText>
 				<TextField
 					autoFocus
@@ -62,7 +59,7 @@ export default function RegisterModal() {
 				/>
 				</DialogContent>
 				<DialogActions>
-					<Button onClick={handleClose} color="primary">Signup</Button>
+					<Button onClick={handleCloseReg} color="primary">Signup</Button>
 				</DialogActions>
 			</Dialog>
 		</div>

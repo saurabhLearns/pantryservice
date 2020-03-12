@@ -20,10 +20,6 @@ const useStyles = makeStyles(theme => ({
   appBar: {
     position: 'relative',
   },
-  title: {
-    marginLeft: theme.spacing(2),
-    flex: 1,
-  },
   div:{
     alignItems: 'center',
     justify:'center'
@@ -59,9 +55,6 @@ export default function Admin() {
 
   return (
     <div>
-      <Typography variant="h4" className={classes.title}>
-        Hello admin!
-      </Typography>
       <br/>
       <Grid container spacing={3} >
         <Grid item xs={12} sm={6}>

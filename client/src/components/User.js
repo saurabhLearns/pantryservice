@@ -1,13 +1,15 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
-import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
-import { Grid, Paper } from '@material-ui/core';
+import{
+	InputLabel,
+	MenuItem,
+	FormControl,
+	Select,
+	Button,
+	TextField,
+	Grid,
+	Paper
+} from '@material-ui/core';
 
 import 'normalize.css'
 
@@ -43,7 +45,7 @@ export default function User() {
 	};
 	return (
 		<div>
-			<Typography variant="h4">Hello user!</Typography>	
+			
 			<br/>	
 			<Grid container spacing={3}>
 				<Grid item xs={12} md={6}>
