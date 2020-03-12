@@ -61,8 +61,7 @@ router.post('/user-login', function(req, res) {
 		bcrypt.compare(password, user.password)
 		.then(isMatch => {
 			if(!isMatch)	return res.status(400).json({msg:"Invalid Credentials!"})
-			jwt.sign(
-				{	
+			jwt.sign({	
 					id: user.id,
 					role: user.role
 				},
@@ -86,20 +85,20 @@ router.post('/user-login', function(req, res) {
 })
 
 
+//change password
 router.put('/change-password', auth, (req, res)=>{
-	//change password
 	var {oldPassword, password} = req.body
 	User.findById(req.user.id).then(getUser=>{
 		bcrypt.compare(oldPassword, getUser.password)
 		.then(isMatch=>{
-			if(!isMatch) return res.status(400).json({msg:"Password is incorrect."})
+			if(!isMatch) return res.status(400).json({msg:"Old password is incorrect."})
 			else{
 				bcrypt.genSalt(10, (err, salt) =>{
 					bcrypt.hash(password, salt, (err, hash) =>{
 						if(err) throw err
 						password = hash
 						User.findByIdAndUpdate(getUser._id, {password: password})
-						.then(() => res.status(200).json({msg:"updated"}))
+						.then(() => res.status(200).json({msg:"Password updated!"}))
 						.catch((err)=>console.log(err.message))		
 					})
 				})
