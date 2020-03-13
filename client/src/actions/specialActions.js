@@ -3,7 +3,7 @@ import {tokenconfig} from './tokenConfig'
 import {GET_SPECIALS, POST_SPECIALS} from './types'
 import {returnErrors} from './errorActions'
 
-export const getSpecials = () => dispatch=>{
+export const getSpecials = () => (dispatch, getState)=>{
 	axios.get('/api/specials/get-special', tokenconfig(getState)
 	.then(res=>dispatch({
 		type: GET_SPECIALS,

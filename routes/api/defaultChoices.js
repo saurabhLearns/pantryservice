@@ -9,12 +9,12 @@ const auth = require('../../middleware/auth')
 router.get('/get-default', auth, function(req, res){
 	//if admin, then admin can see everyone's default choices
 	if(req.user.role<3){
-		defaultChoice.find({}, {"_id":0}).then(allItems => res.json(allItems))
+		defaultChoice.find({}).then(allItems => res.json(allItems))
 	}
 	//else user can only see its default choices
 	else{
 		User.findById(req.user.id).select('email').then(getUser => {
-			defaultChoice.find({"email":getUser.email}, {"_id": 0})
+			defaultChoice.find({"email":getUser.email})
 			.then(getItem => res.json(getItem))
 		})
 	}

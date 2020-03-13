@@ -12,7 +12,17 @@ export default function(state = initialState, action){
 				defaultChoices: action.payload
 			}
 		case CHANGE_DEFAULTS:
-			return{}
+			let i;
+			for(i =0; i<state.defaultChoices.length; i++){
+				if (state.defaultChoices[i]._id == action.payload._id){
+					state.defaultChoices[i].defaultchoice = action.payload.defaultchoice
+					break;
+				}
+			}
+			return{
+				...state,
+				defaultChoices:state.defaultChoices
+			}
 		default:
 			return{
 				...state

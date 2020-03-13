@@ -54,6 +54,7 @@ export default function(state = initialState, action){
 				isLoading: false
 			}
 		
+		//~~~~doubt~~~~
 		case REGISTER_SUCCESS:
 			return{
 				...state,
