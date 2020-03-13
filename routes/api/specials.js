@@ -16,17 +16,16 @@ router.get('/get-special', auth, function(req, res){
 })
 
 
-
 //Post special requirements by users
 router.post('/post-special', auth, function(req, res){
-	User.findById(req.user.id).select('email').then(postUser => {
+	User.findById(req.user.id).then(postUser => {
 		var NewSpecials = new Special({
 			email: postUser.email,
+			name: postUser.name,
 			value: req.body.specialRequest,
 		})
 		NewSpecials.save().then(NewSpecials => res.json(NewSpecials))
 	})
-
 })
 
 

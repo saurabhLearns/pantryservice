@@ -10,6 +10,10 @@ const SpecialSchema = new schema({
 		type : String,
 		required : true
 	},
+	name:{
+		type : String,
+		required : true
+	},
 	date:{
 		type: Date,
 		default: Date()

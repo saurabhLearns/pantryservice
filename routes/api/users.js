@@ -21,10 +21,10 @@ router.post('/adduser', auth, function(req, res){
 			if(user) 
 			return res.status(400).json({msg:"User already exists!"})
 		})
-	
+
 		//After validations
 		const newUser = new User({name, email, password, role})
-		const newChoice = new DefaultChoice({email})
+		const newChoice = new DefaultChoice({email, name})
 		
 		//generate salt and hash password
 		bcrypt.genSalt(10, (err, salt) => {
@@ -46,26 +46,3 @@ router.post('/adduser', auth, function(req, res){
 
 module.exports = router
 
-
-
-/*
-			user => {	
-				jwt.sign(
-					{id: user.id,
-					role:user.role},
-					config.get('jwtSecret'),
-					{expiresIn: 10800},
-					(err, token)=>{
-						if (err) throw err
-						res.json({
-							token,
-							user:{
-								id: user._id, 
-								name: user.name, 
-								email:user.email, 
-								role: user.role
-							}
-						})
-					}
-				)
-			}*/

@@ -1,6 +1,6 @@
 export const GET_DEFAULTS = 'GET_DEFAULTS',
-export const GET_SPECIALS = 'GET_SPECIALS',
 export const CHANGE_DEFAULTS = 'CHANGE_DEFAULTS',
+export const GET_SPECIALS = 'GET_SPECIALS',
 export const POST_SPECIALS = 'POST_SPECIALS',
 export const USER_LOADING = "USER_LOADING";
 export const USER_LOADED = "USER_LOADED";

@@ -7,6 +7,10 @@ const DefaultSchema = new schema({
 		required: true,
 		unique: true
 	},
+	email:{
+		type:String,
+		required: true,
+	},
 	defaultchoice:{
 		type: String,
 		default: "not selected",
